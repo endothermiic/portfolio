@@ -7,20 +7,22 @@ var email = 'mailto:christina.pizzonia@mail.utoronto.ca';
 var linkedin = "https://www.linkedin.com/in/christina-pizzonia-05ab1a14a/";
 
 help = [
-    'email          BEST PLACE TO CONTACT ME\n' +
-    'github         MY GITHUB PROFILE (WARNING: OPENS IN NEW TAB)\n' +
-    'help           YOU KNOW WHAT THIS DOES\n' +
-    'linkedin       CONNECT WITH ME? (WARNING: OPENS IN NEW TAB)\n' +
-    'projects       SOME COOL STUFF I\'VE DONE\n' +
-    'resume         DISPLAY RESUME\n' +
-    'spotify        MUSIC IS MAGIC (WARNING: OPENS IN NEW TAB)\n' +
-    'src            SOURCE CODE FOR THIS SITE (WARNING: OPENS IN NEW TAB)\n' +
-    'whoami         WHO IS ENDOTHERMIIC, REALLY?\n'
+    'email          best place to contact me\n' +
+    'github         my github profile (warning: opens in new tab)\n' +
+    'help           you know what this does\n' +
+    'linkedin       connect with me? (warning: opens in new tab)\n' +
+    'projects       some cool stuff i\'ve done\n' +
+    'resume         display resume\n' +
+    'spotify        music is magic (warning: opens in new tab)\n' +
+    'src            source code for this site (warning: opens in new tab)\n' +
+    'whoami         who is endothermiic, really?'
     // 'reflections         WEEKLY SEMI-RANDOM OBSERVATIONS',
     // 'hidden         IT\'S A SECRET',
 ]
 
-whoami = "Hi! I'm currently a 2nd year computer engineering student at the University of Toronto. ";
+whoami = "Hi! I'm Christina, and I'm currently a 2nd year computer engineering student at the University of Toronto 🐢.\n" +
+    "I'm specializing in control systems and signal processing with a minor in artificial intelligence.";
+//^insert rough timelinehere?
 
 $('body').terminal({
     whoami: function () {
@@ -36,13 +38,11 @@ $('body').terminal({
             target: '_blank',
             text: 'GitHub link' // You can change this text if needed
         }).get(0);
-
         var event = new MouseEvent('click', {
             'view': window,
             'bubbles': true,
             'cancelable': true
         });
-
         githubLink.dispatchEvent(event);
     },
 }, {
