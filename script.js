@@ -35,7 +35,7 @@ projects = [
 
 skills = "Languages (>3 years experience): Verilog, C/C++, Python, MATLAB, LaTeX\n" + //TODO: fix math/eqn rendering 
     "Web-Development: HTML, CSS, JavaScript \n" +
-    "Frameworks: Tensorflow, PyTorch\n" +
+    "ML: Tensorflow, PyTorch\n" +
     "Hardware Design: AutoCAD, Altium, Multisim"
 
 $('body').terminal({
