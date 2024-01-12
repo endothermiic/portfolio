@@ -22,7 +22,7 @@ help = [
     // 'hidden         IT\'S A SECRET',
 ]
 
-whoami = "Hi! I'm Christina, and I'm currently a 2nd year computer engineering student at the University of Toronto 🐢.\n" +
+whoami = "Hi! I'm Christina, and I'm currently a 2nd year electrical engineering student at the University of Toronto 🐢.\n" +
     "I'm specializing in control systems and signal processing with a minor in artificial intelligence.";
 //^insert rough timelinehere?
 
