@@ -42,9 +42,22 @@ $('body').terminal({
     whoami: function () {
         this.echo(whoami);
     },
+    //temporary function to test image insertion; going to update projects over the next few weeks
+    mpv: function () {
+        this.echo($('<img src="front.png"></img>'));
+    },
     email: function () {
         this.echo("Successfully opened draft to email " + emailnomail);
-        openLink.call(this, email);
+        var linkElement = $('<a>', {
+            href: email,
+            target: '_blank',
+        }).get(0);
+        var event = new MouseEvent('click', {
+            'view': window,
+            'bubbles': true,
+            'cancelable': true
+        });
+        linkElement.dispatchEvent(event);
     },
     github: function () {
         openLink.call(this, github);
@@ -71,8 +84,9 @@ $('body').terminal({
         openLink.call(this, srccode);
     }
 }, {
+    prompt: 'cpizzonia@endothermiic ~ % ', greetings:
 
-    greetings:
+
         '               _       _   _                         _ _\n' +
         ' ___ _ __   __| | ___ | |_| |__   ___ _ __ _ __ ___ (_|_) ___ \n' +
         '/ _ \\ \'_ \\ / _` |/ _ \\| __| \'_ \\ / _ \\ \'__| \'_ ` _ \\| | |/ __|\n' +
