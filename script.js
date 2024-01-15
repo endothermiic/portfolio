@@ -93,7 +93,7 @@ $('body').terminal({
         '| __/ | | | (_| | (_) | |_| | | |  __/ |  | | | | | | | | (__ \n' +
         '\\___|_| |_|\\__,_|\\___/ \\__|_| |_|\\___|_|  |_| |_| |_|_|_|\\___|\n' +
         ';;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\n' +
-        '\nWelcome to the interactive webpage of endothermiic. For a list of available commands, type \'help\' (case sensitive)'
+        '\nWelcome to the interactive webpage of endothermiic. For a list of available commands, type \'help\' (case sensitive). NOTE: SITE IS CURRENTLY IN PROGRESS, SOME SECTIONS ARE INCOMPLETE.'
 
 });
 
