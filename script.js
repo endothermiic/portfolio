@@ -26,17 +26,17 @@ whoami = "Hi! I'm Christina, and I'm currently a 2nd year electrical engineering
     "I'm interested in signals, communications and analog electronics.";
 //^insert rough timelinehere?
 
-projects = [
+projects = [ //also - menu for proejcts? ls type with each project getting its own subfolder?
     "Space Invaders: Worked with a partner to implement the retro arcade game Space Invaders in Verilog; design tested on a DE1-SoC FPGA connected to an external monitor with a VGA adapter.\n" +
     "Autonomous Robot: Designed and programmed an autonomous, line-following robot using Fusion360 and Arduinos to navigate a track using a bang-bang control algorithm.\n" +
     "Sauna Redesign (slides available @ https://docs.google.com/presentation/d/1E1__1gkfL-J-T4yYeGk8QzZPa56Gy8qQq15TEvjyjhc/edit?usp=sharing): Designed a fully off-grid sauna in Rhino/Photoshop for Concord Investments' President David Delaney; Milestones followed a waterfall methodology and were tracked in Microsoft Project.\n" +
     "Manhattan Plots (plots available @ https://my.locuszoom.org/gwas/482189/) : Performed a GWAS to determine single nucleotide polymorphisms influencing ERAP-2 expression in Utah residents with EU ancestry and Yoruba individuals from Nigeria in R with data from the 1000 Genomes project"
 ] //todo: embed audio, video - more details on projects beyond just resume!
 
-skills = "Languages (>3 years experience): Verilog, C/C++, Python, MATLAB, LaTeX\n" + //TODO: fix math/eqn rendering 
-    "Web-Development: HTML, CSS, JavaScript \n" +
-    "ML: Tensorflow, PyTorch\n" +
-    "Hardware Design: AutoCAD, Altium, Multisim"
+skills = "Low-Level Languages: Verilog, C/C++, ARM Assembly \n" +
+    "Data Analytics & ML: Python (inc. TensorFlow, Scikit-learn), MATLAB, R\n" +
+    "Web Development: HTML, CSS, JavaScript\n" +
+    "Tools: LaTeX, Microsoft Office, Git, VSCode, AutoCAD, Multisim/LTSpice"
 
 $('body').terminal({
     whoami: function () {
@@ -44,7 +44,8 @@ $('body').terminal({
     },
     //temporary function to test image insertion; going to update projects over the next few weeks
     mpv: function () {
-        this.echo($('<img src="front.png"></img>'));
+        this.echo($('<img src="images/front.png" width="200" ></img>'));
+        this.echo($('<a href="https://www.utoronto.ca/">link text</a>'));
     },
     email: function () {
         this.echo("Successfully opened draft to email " + emailnomail);
