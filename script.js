@@ -13,7 +13,9 @@ var cwd = "/home/cpizzonia"; // default location
 var fs = {
     "/": { type: "dir", children: ["home"] },
     "/home": { type: "dir", children: ["cpizzonia"] },
-    "/home/cpizzonia": { type: "dir", children: ["projects", "github", "linkedin", "resume", "src", "email"] },
+    "/home/cpizzonia": {
+        type: "dir", children: ["email", "github", "linkedin", "projects", "resume", "skills.txt", "src", "whoami.txt"]
+    },
 
     // Projects directory
     "/home/cpizzonia/projects": { type: "dir", children: ["space_invaders", "autonomous_robot", "sauna_redesign", "manhattan_plots"] },
@@ -27,57 +29,73 @@ var fs = {
     // Other links to open
     "/home/cpizzonia/github": {
         type: "file",
+        linkable: true,
         command: function (term) {
             openLink(term, github, "github");
         }
     },
     "/home/cpizzonia/linkedin": {
         type: "file",
+        linkable: true,
         command: function (term) {
             openLink(term, linkedin, "linkedin");
         }
     },
     "/home/cpizzonia/resume": {
         type: "file",
+        linkable: true,
         command: function (term) {
             openLink(term, resume, "resume");
         }
     },
     "/home/cpizzonia/email": {
         type: "file",
+        linkable: true,
         command: function (term) {
             openLink(term, email, "email");
         }
+    },
+    "/home/cpizzonia/whoami.txt": {
+        type: "file",
+        text: `
+Hello! I'm Christina. I'm currently a 4th electrical engineering student at 
+<a href="https://www.utoronto.ca/" target="_blank">UofT</a>.<br>
+I enjoy learning all kinds of things, which has lent itself to a diverse portfolio of projects.
+Most recently, I worked as a digital design engineer at Cadence Design Systems and served as Editor-in-Chief of 
+<a href="https://cannon.skule.ca" target="_blank">The Cannon</a>.<br>
+I have taken courses in RTL design, computer architecture and DSP, and am currently completing a capstone project on EV charging scheduling in MATLAB.
+    `,
+        command: function (term) {
+            term.echo(this.text, { raw: true }); // render HTML when catting
+        }
+    },
+    "/home/cpizzonia/skills.txt": {
+        type: "file",
+        text: "Low-Level Languages: Verilog, C/C++, ARM Assembly \n" +
+            "Data Analytics & ML: Python (inc. TensorFlow, Scikit-learn), MATLAB, R\n" +
+            "Web Development: HTML, CSS, JavaScript\n" +
+            "Tools: LaTeX, Microsoft Office, Git, VSCode, AutoCAD, Multisim/LTSpice",
+        command: function (term) {
+            term.echo(this.text, { raw: true }); // render HTML when catting
+        }
     }
-
-    // "/home/cpizzonia/github": { type: "file", command: () => openLink(github) },
-    // "/home/cpizzonia/linkedin": { type: "file", command: () => openLink(linkedin) },
-    // "/home/cpizzonia/resume": { type: "file", command: () => openLink(resume) },
-    // "/home/cpizzonia/src": { type: "file", command: () => openLink(srccode) },
-    // "/home/cpizzonia/email": { type: "file", command: () => window.open(email, "_blank") }
 };
 
 
-help = [
-    'email          best place to contact me (warning: opens in new tab)\n' +
-    'github         my github profile (warning: opens in new tab)\n' +
-    'help           you know what this does\n' +
-    'linkedin       connect with me? (warning: opens in new tab)\n' +
-    'projects       some cool stuff I\'ve done\n' +
-    'resume         display resume (warning: opens in new tab)\n' +
-    'skills         languages and software I use often\n' +
-    'src            source code for this site (warning: opens in new tab)\n' +
-    'whoami         who is endothermiic, really?'
-    // 'reflections         WEEKLY SEMI-RANDOM OBSERVATIONS',
-    // 'hidden         IT\'S A SECRET',
-]
+// help = [
+//     'email          best place to contact me (warning: opens in new tab)\n' +
+//     'github         my github profile (warning: opens in new tab)\n' +
+//     'help           you know what this does\n' +
+//     'linkedin       connect with me? (warning: opens in new tab)\n' +
+//     'projects       some cool stuff I\'ve done\n' +
+//     'resume         display resume (warning: opens in new tab)\n' +
+//     'skills         languages and software I use often\n' +
+//     'src            source code for this site (warning: opens in new tab)\n' +
+//     'whoami         who is endothermiic, really?'
+//     // 'reflections         WEEKLY SEMI-RANDOM OBSERVATIONS',
+//     // 'hidden         IT\'S A SECRET',
+// ]
 
-var whoami = "Hello! I'm Christina. I'm currently a 4th electrical engineering student at " + '<a href="https://www.utoronto.ca/" target="_blank">UofT</a>.<br>' +
-    "I am someone who enjoys learning all kinds of things, which has lent itself to a diverse portfolio of projects and work experiences." +
-    " Most recently, I have worked as a digital design engineer at Cadence Design Systems, working on high-speed SerDes PCIe PHY, and served as Editor-in-Chief of " +
-    '<a href="https://cannon.skule.ca" target="_blank">The Cannon</a>, the official magazine of the Engineering Society.' +
-    ' I have taken courses in RTL design, computer architecture and digital signal processing, but am also interested in power systems. I am currently in the process of completing a capstone project centred on optimizing scheduling for EV charging in MATLAB.\n';
-//^insert rough timelinehere?
 
 projects = [ //also - menu for proejcts? ls type with each project getting its own subfolder?
     "Space Invaders: Worked with a partner to implement the retro arcade game Space Invaders in Verilog; design tested on a DE1-SoC FPGA connected to an external monitor with a VGA adapter.\n" +
@@ -86,15 +104,7 @@ projects = [ //also - menu for proejcts? ls type with each project getting its o
     "Manhattan Plots (plots available @ https://my.locuszoom.org/gwas/482189/) : Performed a GWAS to determine single nucleotide polymorphisms influencing ERAP-2 expression in Utah residents with EU ancestry and Yoruba individuals from Nigeria in R with data from the 1000 Genomes project"
 ] //todo: embed audio, video - more details on projects beyond just resume!
 
-skills = "Low-Level Languages: Verilog, C/C++, ARM Assembly \n" +
-    "Data Analytics & ML: Python (inc. TensorFlow, Scikit-learn), MATLAB, R\n" +
-    "Web Development: HTML, CSS, JavaScript\n" +
-    "Tools: LaTeX, Microsoft Office, Git, VSCode, AutoCAD, Multisim/LTSpice"
-
 $('body').terminal({
-    whoami: function () {
-        this.echo(whoami);
-    },
     //temporary function to test image insertion; going to update projects over the next few weeks
     mpv: function () {
         this.echo($('<img src="images/front.png" width="200" ></img>'));
@@ -137,9 +147,6 @@ $('body').terminal({
     skills: function () {
         this.echo(skills);
     },
-    spotify: function () {
-        openLink.call(this, spotify);
-    },
     src: function () {
         openLink.call(this, srccode);
     },
@@ -147,10 +154,25 @@ $('body').terminal({
         if (!file) return this.error("open: missing file argument");
         var path = cwd === "/" ? "/" + file : cwd + "/" + file;
         if (fs[path] && fs[path].type === "file") {
-            fs[path].command(this); // <-- THIS passes the terminal
+            // Only open external/link files
+            if (fs[path].linkable) {
+                fs[path].command(this);  // open in new tab
+            } else {
+                this.error("open: " + file + ": Cannot open in new tab. Try 'cat' for text files.");
+            }
         } else {
             this.error("open: " + file + ": No such file");
         }
+    },
+    help: function () {
+        this.echo(
+            "available commands:\n\n" +
+            "open <file>   - opens a file or link in a new tab (for pdfs, websites, etc)\n" +
+            "cat <file>    - prints the contents of a .txt file to the terminal\n" +
+            "cd <dir>      - change to another directory\n" +
+            "ls            - lists all files and directories in the current directory\n" +
+            "pwd           - prints the current working directory\n"
+        );
     },
     ls: function () {
         var dir = fs[cwd];
@@ -181,6 +203,19 @@ $('body').terminal({
         } else {
             this.error("cd: " + path + ": No such directory");
         }
+    },
+    cat: function (file) {
+        if (!file) return this.error("cat: missing file argument");
+        var path = cwd === "/" ? "/" + file : cwd + "/" + file;
+        if (fs[path] && fs[path].type === "file") {
+            if (fs[path].text) {
+                this.echo(fs[path].text, { raw: true });  // renders HTML if stored
+            } else {
+                this.error("cat: " + file + ": Cannot display this file. Try 'open'.");
+            }
+        } else {
+            this.error("cat: " + file + ": No such file");
+        }
     }
 }, {
     prompt: function () { return 'cpizzonia@portfolio:: ' + cwd + ' > '; },
@@ -194,9 +229,7 @@ $('body').terminal({
         '\\___|_| |_|\\__,_|\\___/ \\__|_| |_|\\___|_|  |_| |_| |_|_|_|\\___|\n' +
         ';;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\n' +
         '\nWelcome to the interactive webpage of endothermiic. For a list of available commands, type \'help\' (case sensitive). NOTE: SITE IS CURRENTLY IN PROGRESS, SOME SECTIONS ARE INCOMPLETE.'
-
 });
-
 
 function openLink(term, link, label) {
     term.echo("successfully opened " + label);
